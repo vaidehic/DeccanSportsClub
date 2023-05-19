@@ -1,0 +1,55 @@
+<h3 class="text-center text-info mt-4">Update Batch</h3>
+<div class="col-md-6 offset-md-3 shadow-lg form-container" *ngIf="batch">
+  <form (ngSubmit)="updateBatch()">
+    <div class="form-group mt-2">
+      <label for="startTime">Start Time</label>
+      <input
+        type="time"
+        class="form-control input-field"
+        id="startTime"
+        [(ngModel)]="batch.startTime"
+        name="startTime"
+      />
+    </div>
+    <div class="form-group">
+      <label for="endTime">End Time</label>
+      <input
+        type="time"
+        class="form-control input-field"
+        id="endTime"
+        [(ngModel)]="batch.endTime"
+        name="endTime"
+      />
+    </div>
+    <div class="form-group">
+      <label for="batchSize">Batch Size</label>
+      <input
+        type="number"
+        class="form-control input-field"
+        id="batchSize"
+        [(ngModel)]="batch.batchSize"
+        name="batchSize"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="sportName">Sport Name</label>
+      <select
+        #sports
+        type="text"
+        class="form-control input-field"
+        id="sportId"
+        (change)="onChange(sports.value)"
+        name="sportId"
+      >
+        <option>Select Sport</option>
+        <option *ngFor="let s of sport" value="{{ s.sportId }}">
+          {{ s.sportName }}
+        </option>
+      </select>
+    </div>
+    <button class="btn btn-submit w-100 btn-outline-info mb-3" type="submit">
+      Submit
+    </button>
+  </form>
+</div>

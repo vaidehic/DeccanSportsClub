@@ -1,0 +1,32 @@
+<!-- Displaying enrollments done by user -->
+<div class="container">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">User Name</th>
+        <th scope="col">Email Id</th>
+        <th scope="col">Phone No</th>
+        <th scope="col">Role</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phoneNumber }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <button
+          class="btn btn-primary"
+          (click)="Unlock(user.email, user.name)"
+          class="btn btn-info"
+        >
+          Unlock
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
+</div>

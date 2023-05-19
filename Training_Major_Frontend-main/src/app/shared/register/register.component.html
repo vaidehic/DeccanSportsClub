@@ -1,0 +1,81 @@
+<h3 class="text-center headings h1 mb-4">REGISTER</h3>
+<div class="container w-50 form-container shadow-lg form-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mt-4">
+    <label></label>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control text-info input-field"
+        formControlName="name"
+        placeholder="Enter Name"
+      />
+      <small
+        class="form-text text-danger mt-2 ml-2"
+        *ngIf="
+          registerForm.get('name').touched &&
+          registerForm.get('name').errors !== null &&
+          registerForm.get('name').errors.required
+        "
+        >Name cannot be Empty</small
+      >
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control text-info input-field"
+        formControlName="email"
+        placeholder="Enter Email"
+      />
+    </div>
+    <small
+      class="form-text text-danger ml-2"
+      *ngIf="
+        registerForm.get('email').touched && registerForm.get('email').invalid
+      "
+      >Invalid Email</small
+    >
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control text-info input-field"
+        formControlName="phoneNumber"
+        placeholder="Enter Phone Number"
+      />
+    </div>
+    <small
+      class="form-text text-danger mt-2 ml-2"
+      *ngIf="
+        registerForm.get('phoneNumber').touched &&
+        registerForm.get('phoneNumber').errors !== null &&
+        registerForm.get('phoneNumber').errors.required
+      "
+      >Phone Number Should be of 10 digits</small
+    >
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-control text-info input-field"
+        formControlName="password"
+        placeholder="Enter password"
+      />
+    </div>
+    <small
+      class="form-text text-danger mt-2 ml-2"
+      *ngIf="
+        registerForm.get('password').touched &&
+        registerForm.get('password').errors !== null &&
+        registerForm.get('password').errors.required
+      "
+      >Password should not be less than 4 characters</small
+    >
+    <button
+      type="submit"
+      class="btn btn-outline-info mb-3 w-100 mt-2 btn-submit"
+    >
+      Register
+    </button>
+    <small class="form-text text-danger mb-2 ml-2" *ngIf="mandatory"
+      >All fields are mandatory</small
+    >
+  </form>
+</div>

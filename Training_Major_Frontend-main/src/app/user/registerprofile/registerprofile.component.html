@@ -1,0 +1,100 @@
+<h3 class="text-center text-info mt-4">Add Profile</h3>
+<div class="container w-50 shadow-lg mt-4 form-container">
+  <form
+    ngNativeValidate
+    #profileForm="ngForm"
+    (ngSubmit)="submit(profileForm)"
+    class="mt-2"
+  >
+    <div class="form-group">
+      <label for="profileName">Your Name</label>
+      <input
+        type="text"
+        name="name"
+        class="form-control input-field"
+        aria-describedby="emailHelp"
+        placeholder="Enter Name"
+        ngModel
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="profileAge">Age</label>
+      <input
+        type="text"
+        name="age"
+        class="form-control input-field"
+        aria-describedby="emailHelp"
+        placeholder="Enter Age"
+        ngModel
+      />
+    </div>
+    <div class="form-group">
+      <label for="profileHeight">Height in cm</label>
+      <input
+        type="text"
+        name="height"
+        class="form-control input-field"
+        aria-describedby="emailHelp"
+        placeholder="Enter Height"
+        ngModel
+      />
+    </div>
+    <div class="form-group">
+      <label for="profileWeight">Weight in kg</label>
+      <input
+        type="text"
+        name="weight"
+        class="form-control input-field"
+        aria-describedby="emailHelp"
+        placeholder="Enter Weight"
+        ngModel
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="profileContact">Contact No</label>
+      <input
+        type="number"
+        name="contactNo"
+        class="form-control input-field"
+        aria-describedby="emailHelp"
+        placeholder="Enter Phone No"
+        ngModel
+      />
+    </div>
+    <div class="form-group">
+      <label for="profileGender">Select Gender</label>
+      <br />
+      <input type="radio" name="gender" value="male" ngModel />Male
+      <input type="radio" name="gender" value="female" ngModel />Female
+    </div>
+
+    <div class="form-group">
+      <label for="profileBloodGroup">Blood Group</label>
+      <input
+        type="text"
+        name="bloodGroup"
+        class="form-control input-field"
+        aria-describedby="emailHelp"
+        placeholder="Enter Blood Group"
+        ngModel
+      />
+    </div>
+    <div class="form-group">
+      <label for="profileMedicalHistory">Medical history</label>
+      <input
+        type="textarea"
+        name="mHistory"
+        class="form-control input-field"
+        aria-describedby="emailHelp"
+        placeholder="Enter Medical History"
+        ngModel
+      />
+    </div>
+
+    <button type="submit" class="btn btn-submit btn-outline-info w-100 my-2">
+      Register
+    </button>
+  </form>
+</div>

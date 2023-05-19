@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "list-plans.component.scss"
+    ],
+    "names": [],
+    "file": "list-plans.component.css"
+}

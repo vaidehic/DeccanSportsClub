@@ -1,0 +1,41 @@
+.login-form {
+  padding-top: 100px;
+}
+
+.login-container {
+  margin-top: 100px;
+  /* background-color: whitesmoke; */
+  background-color: lightpink;
+  /* color: red; */
+}
+
+/* .login-input{
+    border-radius: 30px;
+    border: 2px solid gray;
+    outline: none;
+} */
+.modal-content {
+  border-radius: 30px !important;
+}
+
+.inputvalue {
+  border-radius: 30px;
+  height: 35px;
+  border: 2px solid lightgray;
+  outline: none;
+  text-align: center;
+}
+
+.modal-btn {
+  border-radius: 30px !important;
+  height: 34.5px;
+}
+
+.login-header {
+  margin-top: 100px;
+}
+
+.round-login {
+  border-radius: 30px !important;
+}
+/*# sourceMappingURL=login.component.css.map */

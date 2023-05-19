@@ -1,0 +1,38 @@
+<div class="container">
+  <a class="btn btn-outline-info my-3" routerLink="/admin/addmanager">
+    Add Manager
+  </a>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Email Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Role</th>
+        <th scope="col">Sport Name</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="managers.length > 0; else nodata">
+      <tr *ngFor="let m of managers">
+        <td>{{ m.email }}</td>
+        <td>{{ m.name }}</td>
+        <td>{{ m.phoneNumber }}</td>
+        <td>{{ m.role }}</td>
+        <td>{{ m.sportName }}</td>
+        <td>
+          <button class="btn btn-info" (click)="updateManager(m.userId)">
+            Update
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteManager(m.userId)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <ng-template #nodata>No Managers to show</ng-template>
+  </table>
+</div>

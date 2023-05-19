@@ -1,0 +1,42 @@
+<div class="container">
+  <a class="btn btn-outline-info my-3" routerLink="/manager/addbatch">
+    Add Batch
+  </a>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Batch Name</th>
+        <th scope="col">Batch Size</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Sport Name</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="batch.length > 0; else nada">
+      <tr *ngFor="let b of batch">
+        <td>Batch-{{ b.batchId }}</td>
+        <td>{{ b.batchSize }}</td>
+        <td>{{ b.startTime }}</td>
+        <td>{{ b.endTime }}</td>
+        <td>{{ b.sport.sportName }}</td>
+        <td>
+          <button
+            class="btn btn-primary"
+            (click)="updateBatch(b.batchId)"
+            class="btn btn-info"
+          >
+            Update
+          </button>
+        </td>
+
+        <td>
+          <button class="btn btn-danger" (click)="deleteBatch(b.batchId)">
+            delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

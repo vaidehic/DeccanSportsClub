@@ -1,0 +1,40 @@
+<div class="container w-50">
+  <div class="card mt-4 shadow-lg form-container" *ngIf="user">
+    <div class="card-body" *ngIf="user">
+      <p class="card-text text-center h4 mt-2">Name-{{ user.user.name }}</p>
+      <p class="card-text text-center h4 mt-2">
+        Enrollment Id-{{ user.enrollmentId }}
+      </p>
+      <p class="card-text text-center h4 mt-2"></p>
+      <p class="card-text text-center h4 mt-2">
+        Enrollment Status-{{ user.enrollmentStatus }}
+      </p>
+      <p class="card-text text-center h4 mt-2">
+        Selected Plan-{{ user.plan.planName }}
+      </p>
+      <p class="card-text text-center h4 mt-2">
+        Selected Sport-{{ user.sport.sportName }}
+      </p>
+
+      <div class="form-group">
+        <label for="sportName">Select Batch</label>
+        <select
+          #batch
+          type="text"
+          class="form-control input-field"
+          id="sportId"
+          (change)="onChange(batch.value)"
+          name="batchId"
+        >
+          <option>Select</option>
+          <option *ngFor="let b of batches" value="{{ b.batchId }}">
+            Batch- {{ b.batchId }}
+          </option>
+        </select>
+      </div>
+      <a class="btn btn-submit w-100 btn-outline-info" (click)="approveUser()"
+        >Enroll</a
+      >
+    </div>
+  </div>
+</div>

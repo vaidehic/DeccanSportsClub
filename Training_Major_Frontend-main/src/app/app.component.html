@@ -1,0 +1,194 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <img src="../assets/club_logo.png" alt="Logo" class="logo-img">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_MANAGER'"
+          routerLink="manager"
+          >Home</a
+        >
+      </li>
+
+      <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_ADMIN'"
+          routerLink="admin"
+          >Home</a
+        >
+      </li>
+
+      <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_MEMBER'"
+          routerLink="user"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_MEMBER'"
+          routerLink="myprofile"
+          >My Profile</a
+        >
+      </li>
+
+
+      <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          href="admin"
+          *ngIf="ur === 'ROLE_ADMIN'"
+          routerLink="admin/viewsports"
+          >View Sports</a
+        >
+      </li>
+
+     <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_ADMIN'"
+          routerLink="admin/unlock"
+        >
+          Unlock Accounts</a
+        >
+      </li> 
+
+      <li class="nav-item active" *ngIf="isLogged()">
+        <a
+          class="nav-link"
+         
+          routerLink="changepassword"
+        >
+          change password</a
+        >
+      </li> 
+
+
+      <!-- <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_ADMIN'"
+          routerLink="admin/addmanager"
+        >
+          addmanager</a
+        >
+      </li> -->
+
+      <!-- <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_ADMIN'"
+          routerLink="admin/updateManager"
+        >
+          updatemanager</a
+        >
+      </li> -->
+      <!-- <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          href="admin"
+          *ngIf="ur === 'ROLE_ADMIN'"
+          routerLink="admin/addsport"
+          >Add Sport</a
+        >
+      </li> -->
+      <!-- <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_MANAGER'"
+          routerLink="manager/addbatch"
+          >Add Batch</a
+        >
+      </li> -->
+      <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_MANAGER'"
+          routerLink="manager/listplans"
+          >View Plans</a
+        >
+      </li>
+      <!-- <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_MANAGER'"
+          routerLink="manager/addplan"
+          >Add Plan</a
+        >
+      </li> -->
+      <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_MANAGER'"
+          routerLink="manager/enrollment"
+          >User Enrollments</a
+        >
+      </li>
+
+      <li class="nav-item dropdown active" *ngIf="userrole | async as ur">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" 
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        *ngIf="ur === 'ROLE_MANAGER'">
+        Reports
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <a class="dropdown-item" routerLink="manager/sportreport">Sports Report</a>
+          <a class="dropdown-item" routerLink="manager/planreport">Plans Report</a>
+          <a class="dropdown-item" routerLink="manager/enrollmentreport">Enrollment Report</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown active" *ngIf="userrole | async as ur">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" 
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        *ngIf="ur === 'ROLE_ADMIN'">
+        Reports
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <a class="dropdown-item" routerLink="admin/sportreport">Sports Report</a>
+          <a class="dropdown-item" routerLink="admin/planreport">Plans Report</a>
+          <a class="dropdown-item" routerLink="admin/enrollmentreport">Enrollment Report</a>
+        </div>
+      </li>
+
+
+      <li class="nav-item active" *ngIf="userrole | async as ur">
+        <a
+          class="nav-link"
+          *ngIf="ur === 'ROLE_MEMBER'"
+          routerLink="userenrollments"
+          >User Enrollments</a
+        >
+      </li>
+      <li class="nav-item active" *ngIf="!isLogged()">
+        <a class="nav-link" href="register">Register</a>
+      </li>
+      <li class="nav-item active" *ngIf="!isLogged()">
+        <a class="nav-link" href="login">Login</a>
+      </li>
+      <li class="nav-item active" *ngIf="isLogged()">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

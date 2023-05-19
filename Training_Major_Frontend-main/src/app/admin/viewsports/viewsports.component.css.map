@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,gBAAgB,EAAE,2CAA2C;CAChE",
+    "sources": [
+        "viewsports.component.scss"
+    ],
+    "names": [],
+    "file": "viewsports.component.css"
+}

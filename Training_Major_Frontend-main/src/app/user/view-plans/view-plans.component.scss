@@ -1,0 +1,22 @@
+.inputvalue{
+    border-radius: 30px;
+    border: 2px solid lightgray;
+    outline: none;
+    text-align: center;
+}
+.inputvalue::placeholder{
+    text-align: center;
+}
+.btn{
+    border-radius: 30px;
+    height: 34.5px; 
+}
+.modal-body{
+    height: 300px;
+}
+.modal-content{
+    border-radius: 30px !important;
+}
+.plan-data{
+    color: #d95c0e;
+}

@@ -1,0 +1,72 @@
+<div class="container">
+  <!-- Displaying enrollments done by user -->
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Sport Name</th>
+          <th>Plan Name</th>
+          <th>Plan Start Date</th>
+          <th>Plan End Date</th>
+          <th>Batch Start Time</th>
+          <th>Batch End time</th>
+          <th>Amount Paid</th>
+          <th>Enrollment Status</th>
+          <th>Days Remaining</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let enrollment of pagedItems" >
+          <td>{{ enrollment.sport.sportName }}</td>
+          <td>{{ enrollment.plan.planName }}</td>
+          <td>{{ enrollment.planStartDate }}</td>
+          <td>{{ enrollment.planEndDate }}</td>
+          <!-- Displaying data on condition-if batch is assigned or not-->
+          <td *ngIf="enrollment.batch != null">
+            {{ enrollment.batch.startTime }}
+          </td>
+          <td *ngIf="enrollment.batch != null">
+            {{ enrollment.batch.endTime }}
+          </td>
+          <td *ngIf="enrollment.batch == null">{{ noData }}</td>
+          <td *ngIf="enrollment.batch == null">{{ noData }}</td>
+          <td>{{ enrollment.amountPaid | currencyForAmount }}</td>
+          <td>{{ enrollment.enrollmentStatus }}</td>
+          <!-- Displaying data on condition-if batch is assigned or not-->
+          <td *ngIf="enrollment.batch != null">
+            {{ daysRemaining(enrollment.planEndDate) }}
+          </td>
+          <td *ngIf="enrollment.batch == null">{{ noData }}</td>
+          <td *ngIf="enrollment.enrollmentStatus == 'APPROVED'">
+            <button
+              class="btn btn-info"
+              (click)="renew(enrollment.enrollmentId)"
+              [disabled]="isActive"
+            >
+              Renew
+            </button>
+          </td>
+          <td *ngIf="enrollment.enrollmentStatus == 'REJECTED'">
+            <span
+              (click)="rejectionMessage()"
+              class="d-flex justify-content-center"
+              ><i
+                class="fa fa-info-circle h3 text-warning"
+                aria-hidden="true"
+              ></i
+            ></span>
+          </td>
+          <td *ngIf="enrollment.enrollmentStatus == 'PENDING'"></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- pagination -->
+    <div class="d-flex justify-content-center">
+      <jw-pagination
+        [items]="enrollments"
+        [pageSize]="10"
+        (changePage)="beginPagination($event)"
+        pagesize="10"
+      ></jw-pagination>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+$heading-color: #d95c0e;
+$borderRadius:30px;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    // background-image:url('../src/assets/background_image.jpg');
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // opacity: 0.3;
+}
+
+.modal.show{
+    display: block;
+}
+
+.input-field.ng-touched.ng-invalid{
+    border:3px solid #ec5858 !important;
+}
+.input-field{
+    border:2px solid $heading-color !important;
+    border-radius: $borderRadius;
+}
+.btn-submit{
+    border-radius: $borderRadius; 
+}
+.form-container{
+    border: 4px solid $heading-color;
+    border-radius: $borderRadius;
+    //box-shadow: 2px 2px 15px $heading-color !important;
+}
+.logo-img{
+    border-radius: 45px;
+    
+}
+.headings{
+    color: $heading-color;
+}
+
+
+body {
+    background-image: url("assets/bg7.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

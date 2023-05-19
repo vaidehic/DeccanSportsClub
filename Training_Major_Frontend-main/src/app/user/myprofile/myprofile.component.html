@@ -1,0 +1,198 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="container emp-profile" *ngIf="profile; else elseBlock">
+  <form method="post">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <div *ngIf="profile.gender === 'male'">
+            <img src="../../../assets/male.png" alt="Male" />
+            <div class="file btn btn-lg btn-primary">Profile Photo</div>
+          </div>
+        </div>
+
+        <div class="profile-img">
+          <div *ngIf="profile.gender === 'female'">
+            <img src="../../../assets/female.png" alt="Female" />
+            <div class="file btn btn-lg btn-primary">Profile Photo</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h5>Name:-{{ profile.name }}</h5>
+          <h6>Sport Enthusiast</h6>
+
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                href="#home"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+                >Personal Info</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="profile-tab"
+                data-toggle="tab"
+                href="#profile"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+                >Check Your BMI</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-work">
+          <p>Sports Available</p>
+          <a href="">Cricket</a><br />
+          <a href="">swimming</a><br />
+          <a href="">FootBall</a><br />
+          <a href="">Table-Tennis</a><br />
+          <a href="">Tennis</a><br />
+          <p>Other Activities</p>
+          <a href="">Yoga</a><br />
+          <a href="">Gymnastics</a><br />
+          <a href="">Cardio Training </a><br />
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <div class="row">
+              <div class="col-md-6">
+                <label>User Id</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.profileId }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Blood Group</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.bloodGroup }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Age</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.age }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Gender</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.gender }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Height</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.height }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Weight</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.weight }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Medical History</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.mHistory }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Phone No</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.contactNo }}</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <div class="row">
+              <div class="col-md-6">
+                <label>Height</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.height }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Weight</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ profile.weight }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>BMI</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ Bmi }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="addProfile ml-4">
+  <ng-template
+    #elseBlock
+    style="color: white"
+    class="d-flex justify-content-center"
+    ><div>
+      <h5>Please Add Profile</h5>
+    </div>
+    <a class="btn btn-outline-info my-3" routerLink="registerprofile">
+      Add Profile
+    </a></ng-template
+  >
+</div>

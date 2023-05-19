@@ -1,0 +1,66 @@
+<h3 class="text-center text-info">Add New Plan</h3>
+<div class="col-md-6 offset-md-3 shadow-lg form-container">
+  <form #planForm="ngForm" (ngSubmit)="addPlan(planForm)">
+    <div class="form-group mt-2">
+      <label for="planName">Plan Name</label>
+      <input
+        type="text"
+        class="form-control input-field"
+        id="planName"
+        [(ngModel)]="planName"
+        name="planName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="planStartDate">Starts From</label>
+      <input
+        type="date"
+        class="form-control input-field"
+        id="planStartDate"
+        [(ngModel)]="planStartDate"
+        name="planStartDate"
+      />
+    </div>
+    <div class="form-group">
+      <label for="planDuration">Duration(in Months)</label>
+      <input
+        type="number"
+        class="form-control input-field"
+        id="planDuration"
+        [(ngModel)]="planDuration"
+        name="planDuration"
+      />
+    </div>
+    <div class="form-group">
+      <label for="planFees">Fees</label>
+      <input
+        type="number"
+        class="form-control input-field"
+        id="planFees"
+        [(ngModel)]="planFees"
+        name="planFees"
+      />
+    </div>
+    <div class="form-group">
+      <label for="sportName">Sport Name</label>
+      <select
+        #sports
+        type="text"
+        class="form-control input-field"
+        id="sportId"
+        (change)="onChange(sports.value)"
+        name="sportId"
+        value="Select sport"
+      >
+        <option>Select</option>
+        <option *ngFor="let s of sport" value="{{ s.sportId }}">
+          {{ s.sportName }}
+        </option>
+      </select>
+    </div>
+
+    <button class="btn btn-submit w-100 btn-outline-info mb-3" type="submit">
+      Submit
+    </button>
+  </form>
+</div>

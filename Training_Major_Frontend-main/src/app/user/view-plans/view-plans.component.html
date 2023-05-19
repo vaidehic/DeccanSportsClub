@@ -1,0 +1,186 @@
+<div class="container" *ngIf="plans">
+  <h4 class="text-center headings h3 mt-2">Plans for {{ sportName }}</h4>
+  <div class="row">
+    <div class="col-md-6" *ngFor="let plan of plans">
+      <div class="card mt-4 shadow-lg">
+        <img
+          src="data:image/gif;base64,{{ sportImage }}"
+          height="200"
+          width="200"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <div class="col-sm-12">
+            <p class="card-text text-center text-info h4 mt-2">
+              {{ plan.planName | uppercase }}
+            </p>
+          </div>
+          <hr />
+          <div class="col-sm-12">
+            <p class="card-text text-sm-left h4 mt-2 text-secondary">
+              Fees: <span class="plan-data">{{ plan.planFees }}</span>
+            </p>
+          </div>
+          <div class="col-sm-12">
+            <p class="card-text text-sm-left h4 mt-2 text-secondary">
+              Start Date:
+              <span class="plan-data">{{
+                plan.planStartDate | date: "mediumDate"
+              }}</span>
+            </p>
+          </div>
+          <div class="col-sm-12">
+            <p class="card-text text-sm-left h4 mt-2 text-secondary">
+              End Date:
+              <span class="plan-data">{{
+                plan.planEndDate | date: "mediumDate"
+              }}</span>
+            </p>
+          </div>
+          <div class="col-sm-12 mt-2">
+            <a
+              class="btn btn-outline-info w-100"
+              (click)="
+                addEnrollment(
+                  plan.planId,
+                  plan.planFees,
+                  plan.planStartDate,
+                  plan.planEndDate
+                )
+              "
+              >Enroll</a
+            >
+          </div>
+        </div>
+      </div>
+      <!-- icons  -->
+      <div class="row d-flex align-items-center mt-4">
+        <div class="col-md-2">
+          <i
+            *ngIf="checkLikeStatus(plan.planId); else nextlike"
+            class="fa fa-heart text-danger h3 shadow-lg"
+            aria-hidden="true"
+          ></i>
+          <ng-template #nextlike>
+            <i
+              (click)="onLikeClick(plan.planId)"
+              class="fa fa-heart-o h3 shadow-lg"
+              aria-hidden="true"
+            ></i>
+          </ng-template>
+        </div>
+        <div class="col-md-2">
+          <i
+            *ngIf="checkDisLikeStatus(plan.planId); else nextdislike"
+            class="fa fa-thumbs-down text-secondary h3 shadow-lg"
+            aria-hidden="true"
+          ></i>
+          <ng-template #nextdislike>
+            <i
+              (click)="onDislikeClick(plan.planId)"
+              class="fa fa-thumbs-o-down text-dark h3 shadow-lg"
+              aria-hidden="true"
+            ></i>
+          </ng-template>
+        </div>
+        <div
+          class="col-md-6"
+          (click)="onCommentClick(plan.planId)"
+          (click)="showModal = true"
+        >
+          <i class="fa fa-comments text-dark h3" aria-hidden="true"></i>
+        </div>
+      </div>
+      <!-- likes and dislikes numbers -->
+      <div class="row">
+        <div class="col-md-2">
+          <p>{{ plan.totalLikes }}</p>
+        </div>
+        <div class="col-md-2">
+          <p>{{ plan.totalDisLikes }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  [ngClass]="{ show: showModal }"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-scrollable modal-dialog-centered"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-info" id="exampleModalLongTitle">
+          Comments
+        </h5>
+        <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="h2" (click)="showModal = false" aria-hidden="true"
+            ><i class="fa fa-times text-danger" aria-hidden="true"></i
+          ></span>
+        </a>
+      </div>
+      <div class="modal-body round-model">
+        <!-- view all comments -->
+        <div *ngFor="let comm of comments">
+          <div class="row">
+            <div class="col-md-3 m-0">
+              <p class="font-weight-bold h4 text-info">
+                {{ comm.user.name | titlecase }}
+              </p>
+            </div>
+            <div class="col-md-6 m-0">
+              <p class="text-secondary">
+                {{ comm.commentTime | timeAgo }}
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8 m-0">
+              <p class="headings">{{ comm.comment }}</p>
+            </div>
+            <div class="col-md-4 m-0">
+              <a
+                (click)="deleteComment(comm.commentId)"
+                class="text-secondary text-decoration-none"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+      <!-- input field and button -->
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-7">
+          <input
+            #commentvalue
+            class="form-control text-info w-100 mb-4 h-75 input-field"
+            type="text"
+            value="{{ inputField }}"
+            placeholder="Enter comment..."
+          />
+        </div>
+        <div class="col-md-4">
+          <button
+            (click)="onClick(commentvalue)"
+            (click)="commentvalue.value = ' '"
+            class="btn btn-outline-info"
+          >
+            Comment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

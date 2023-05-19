@@ -1,0 +1,75 @@
+<h3 class="text-center text-info">Add Manager</h3>
+
+<div class="col-md-6 offset-md-3 shadow-lg form-container">
+  <form #managerForm="ngForm" (ngSubmit)="addManager(managerForm)">
+    <div class="form-group mt-2">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control input-field"
+        id="name"
+        [(ngModel)]="name"
+        name="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control input-field"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
+      <br />
+      <small class="form-text text-danger mb-2 ml-2" *ngIf="validemail"
+        >Invalid Email</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="batchSize">Password</label>
+      <input
+        type="password"
+        class="form-control input-field"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        type="number"
+        class="form-control input-field"
+        id="phoneNumber"
+        [(ngModel)]="phoneNumber"
+        name="phoneNumber"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="sportName">Sport Name</label>
+      <select
+        #sports
+        type="text"
+        class="form-control input-field"
+        id="sportId"
+        (change)="onChange(sports.value)"
+        name="sportId"
+      >
+        <option>Select Sports</option>
+        <option *ngFor="let s of sport" value="{{ s.sportId }}">
+          {{ s.sportName }}
+        </option>
+      </select>
+    </div>
+
+    <button class="btn btn-submit w-100 btn-outline-info mb-2" type="submit">
+      Submit
+    </button>
+  </form>
+</div>
